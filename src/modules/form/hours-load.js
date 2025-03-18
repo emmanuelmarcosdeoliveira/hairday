@@ -14,11 +14,9 @@ export function hoursLoad({ date }) {
     const [scheduleHours] = hour.split(":");
 
     // Vamos adicionar a hora e verificar se está no passado
-
     const isHourPast = dayjs(date).add(scheduleHours, "hours").isAfter(dayjs());
 
     // Define se o horário está disponível
-
     return {
       hour,
       available: isHourPast,
