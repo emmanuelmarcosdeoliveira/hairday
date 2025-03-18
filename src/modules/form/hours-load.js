@@ -9,6 +9,9 @@ import { hoursClick } from "./hours-click";
 const hours = document.getElementById("hours");
 
 export function hoursLoad({ date }) {
+  // Limpa a lista de horários
+  hours.innerHTML = "";
+
   const opening = openingHours.map((hour) => {
     // Recuperar a hora e formatando para exibir somente a hora sem os minutos
     const [scheduleHours] = hour.split(":");
