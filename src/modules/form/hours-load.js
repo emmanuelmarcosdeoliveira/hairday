@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 
 // importação dos horários de abertura e fechamento
 import { openingHours } from "../../utils/opening-hours";
+import { hoursClick } from "./hours-click";
 
 // Importando a nossa lista de horas
 const hours = document.getElementById("hours");
@@ -38,6 +39,8 @@ export function hoursLoad({ date }) {
     }
     hours.append(li);
   });
+  // Adiciona o evento de click nos horários disponíveis
+  hoursClick();
 }
 
 function hourHeadAdd(title) {
