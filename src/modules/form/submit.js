@@ -1,6 +1,8 @@
 // importações
 import dayjs from "dayjs";
 
+import { scheduleNew } from "../../services/schedule-new.js";
+
 // Capturando o input do nome
 const clientName = document.getElementById("client");
 
@@ -16,7 +18,7 @@ selectedDate.value = inputToday;
 // Definir que não pode ser inserido datas ja passadas
 selectedDate.min = inputToday;
 
-form.onsubmit = (event) => {
+form.onsubmit = async (event) => {
   // prevenindo o evento de refresh do formulário
   event.preventDefault();
   try {
@@ -40,6 +42,11 @@ form.onsubmit = (event) => {
 
     // Gerar um ID
     const id = new Date().getTime();
+    await scheduleNew({
+      id,
+      name,
+      when,
+    });
   } catch (error) {
     alert("Não foi possível realizar o agendamento");
     console.log(error);
